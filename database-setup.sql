@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS waitlist (
     next int,
     PRIMARY KEY (id),
     FOREIGN KEY user REFERENCES users (id),
-    FOREIGN KEY next REFERENCES waitlist (id) ON DELETE CASCADE);
+    FOREIGN KEY next REFERENCES waitlist (id));
 
 CREATE TABLE IF NOT EXISTS tools (
     id SERIAL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS tools (
     is_checked_out boolean NOT NULL DEFAULT false,
     next int, -- the person who either has the tool (if is_checked_out) or will get it next
     PRIMARY KEY (id),
-    FOREIGN KEY next REFERENCES waitlist (id) ON DELETE SET NULL);
+    FOREIGN KEY next REFERENCES waitlist (id));
 
 -- Whenever the `next` value changes, `is_checked_out` is set to false
 CREATE TRIGGER reset_checkout
