@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS waitlist (
     user int NOT NULL,
     next int,
     PRIMARY KEY (id),
-    FOREIGN KEY tool REFERENCES tools (id) ON DELETE CASCADE,
     FOREIGN KEY user REFERENCES users (id),
     FOREIGN KEY next REFERENCES waitlist (id) ON DELETE CASCADE);
 
